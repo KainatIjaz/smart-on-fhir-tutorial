@@ -1,30 +1,17 @@
-<!DOCTYPE html>
+OCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>SMART Launch</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fhir-client/0.1.15/fhir-client.min.js"></script>
+  <script src="lib/fhir-client.js"></script>
 </head>
 <body>
   <script>
-    (function() {
-      // Extract `iss` from the URL query parameters
-      const params = new URLSearchParams(window.location.search);
-      const iss = params.get("iss");  // Get the FHIR server URL dynamically
-
-      if (!iss) {
-        console.error("Missing 'iss' parameter in the URL. Ensure the app is launched from an EHR.");
-        alert("Error: Missing 'iss' parameter. Please launch from an EHR.");
-      } else {
-        // Proceed with authorization
-        FHIR.oauth2.authorize({
-          iss: iss,  // Use dynamically extracted iss
-          client_id: "550d4019-2243-46d4-8ba6-400435b35c58", // Replace after registration
-          scope: "patient/Patient.read launch online_access openid profile",
-          redirect_uri: "https://KainatIjaz.github.io/smart-on-fhir-tutorial/example-smart-app/index.html"
-        });
-      }
-    })();
+    FHIR.oauth2.authorize({
+      client_id: "550d4019-2243-46d4-8ba6-400435b35c58", // Replace later after registration
+      scope: "patient/Patient.read launch online_access openid profile",
+      redirect_uri: "KainatIjaz.github.io/smart-on-fhir-tutorial/example-smart-app/index.html"
+    });
   </script>
 </body>
 </html>
